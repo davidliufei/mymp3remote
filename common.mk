@@ -18,6 +18,6 @@ $(BIN):$(LINK_OBJ)
 $(LINK_OBJ_DIR)/%.o:%.c
 	gcc -o $@ -c $(filter %.c, $^)
 %.d:%.c
-	gcc -MM $^ > $@
+	gcc -MM $^ | sed 's,\(.*\).o[ :]*, $(LINK_OBJ_DIR)/\1.o:,g' > $@
 clean:
 	rm -f $(BIN) $(OBJS) $(DEPS)
