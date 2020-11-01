@@ -1,5 +1,5 @@
 #ifndef __USB_H
 #define __USB_H
+#include "usb20.h"
 void usb_init();
-#define VERSION "3.5"
 #endif
