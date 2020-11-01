@@ -6,6 +6,8 @@ BIN  = mp3
 
 $(BIN):$(OBJS)
 	gcc -o $@ $^
+usb.o:usb.c usb.h   # add header file dependence 
+	gcc -o $@ -c $(filter %.c, $^)
 %.o:%.c
 	gcc -o $@ -c $^
 clean:
