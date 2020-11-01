@@ -1,7 +1,7 @@
 .PHONY:clean
 
-SRCS = $(wildcard *.c)   #扫描所有源文件
-OBJS = $(SRCS:.c=.o)     #把所有.c替换为所有.o
+SRCS = $(wildcard *.c)   #scan all source files
+OBJS = $(SRCS:.c=.o)     #replace all source files from .c to .o
 BIN  = mp3
 
 $(BIN):$(OBJS)
