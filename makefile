@@ -1,6 +1,7 @@
 .PHONY:clean
 
-OBJS = player.o lcd.o usb.o
+SRCS = $(wildcard *.c)   #扫描所有源文件
+OBJS = $(SRCS:.c=.o)     #把所有.c替换为所有.o
 BIN  = mp3
 
 $(BIN):$(OBJS)
