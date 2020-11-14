@@ -23,15 +23,15 @@ DEPS := $(addprefix $(DEP_DIR)/, $(DEPS))
 LIB := $(addprefix $(LIB_DIR)/, $(LIB))
 DLL  := $(addprefix $(LIB_DIR)/, $(DLL))
 LINK_OBJ = $(wildcard $(LINK_OBJ_DIR)/*.o)
-LINK_OBJ += $(OBJS)
-LIB_DEP = $(wildcard $(LIB_DIR)/*.a)
+LINK_OBJ += $(OBJS)  #test 
+LIB_DEP = $(wildcard $(LIB_DIR)/*.a) $(wildcard $(LIB_DIR)/*.so)
 LINK_LIB_NAME = $(patsubst lib%, -l%, $(basename $(notdir $(LIB_DEP))))
 all: $(DEPS) $(OBJS) $(LIB) $(DLL) $(BIN)
 ifneq ("$(wildcard $(DEPS))", "")
 include $(DEPS)
 endif 
 $(BIN):$(LINK_OBJ) $(LIB_DEP)
-	gcc -o $@  $^ -L$(LIB_DIR) $(LINK_LIB_NAME)
+	gcc -o $@  $(LINK_OBJ) -L$(LIB_DIR) $(LINK_LIB_NAME)
 $(LIB):$(OBJS)
 	ar rcs $@ $^
 $(DLL):$(OBJS)
