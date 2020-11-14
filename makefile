@@ -7,6 +7,7 @@ all:
 	make -C usb
 	make -C app
 clean:
-	rm -fr app/link_obj app/dep mp3
+	rm -fr app/link_obj app/dep app/lib_obj mp3
+	rm -fr lib/*.a
 		
 
